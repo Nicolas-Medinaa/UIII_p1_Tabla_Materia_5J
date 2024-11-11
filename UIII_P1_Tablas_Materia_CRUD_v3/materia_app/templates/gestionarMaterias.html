@@ -1,0 +1,62 @@
+{%extends "base.html"%} {% block cuerpo%}
+
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h1>Mamá</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarMateria/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-roup">
+                        <input type="text" id="txtcodigo" name="txtcodigo" class="form-control" placeholder="Codigo Materia" minLenght="6" maxLenght="6" required>
+                    </div>
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Nombre Materia" maxLenght="100" required>
+                    </div>
+                    <div class="form-roup py-2">
+                        <input type="text" id="numcreditos" name="numcreditos" class="form-control" value="l" min="1" maX="9" required>
+                    </div>
+                    <div class="form-roup py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 ">
+        <h1>Listado de Materias</h1>
+        <div class="table-responsive ">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col ">#</th>
+                        <th scope="col ">Codgio</th>
+                        <th scope="col ">Nombre</th>
+                        <th scope="col ">Creditos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in mismaterias%}
+                    <tr>
+                        <td>
+                            {{forloop.counter}}
+                        </td>
+                        <td>{{m.codigo}}</td>
+                        <td>{{m.nombre}}</td>
+                        <td>{{m.creditos}}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+{%endblock%}
