@@ -1,0 +1,35 @@
+{%extends "base.html" %}
+
+{% block cuerpo%}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!-- la tarjeta card -->
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarMateria/" method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="form-roup">
+                        <input type="text" id="txtcodigo" name="txtcodigo" class="form-control" value="{{mismaterias.codigo}}" minLenght="6" maxLenght="6" readonly required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{mismaterias.codigo}}"  maxLenght="100" required>
+                    </div>
+                    
+                    <div class="form-roup py-2">
+                        <input type="text" id="numcreditos" name="numcreditos" class="form-control" vvalue="{{mismaterias.codigo}}"  min="1" maX="9" required>
+                    </div>
+
+                    <div class="form-roup py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+        
+        <!-- fin la tarjeta card -->
+    </div>
+
+</div>
+{%endblock%}
